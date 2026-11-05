@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" font-family="system-ui, sans-serif">
+  <rect width="720" height="320" fill="#F4F6F9" rx="12"/>
+  <polyline points="40,260 120,190 170,225 260,140 310,180 400,95 450,135 520,70 580,150 620,215 680,240" fill="none" stroke="#0E1726" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#2F5BD8" font-size="14">
+    <circle cx="260" cy="140" r="5"/><text x="232" y="125">HH</text>
+    <circle cx="400" cy="95" r="5"/><text x="372" y="80">HH</text>
+    <circle cx="520" cy="70" r="5"/><text x="492" y="55">HH</text>
+    <circle cx="310" cy="180" r="5"/><text x="300" y="205">HL</text>
+    <circle cx="450" cy="135" r="5"/><text x="440" y="160">HL</text>
+  </g>
+  <line x1="420" y1="135" x2="700" y2="135" stroke="#D2434F" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="560" y="128" fill="#D2434F" font-size="14">break of structure</text>
+</svg>
