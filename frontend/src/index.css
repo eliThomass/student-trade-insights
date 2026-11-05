@@ -1,0 +1,173 @@
+@import '@fontsource-variable/schibsted-grotesk';
+@import 'tailwindcss';
+
+/*
+ * Design tokens. See docs/PLAN.md, section 1.
+ * Semantic colors (up / down / hold) carry meaning only:
+ * active and approve, red flags and reject, waitlisted and pending.
+ */
+@theme {
+  --font-sans: 'Schibsted Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #ffffff;
+  --color-mist: #f4f6f9;
+  --color-ink: #0e1726;
+  --color-slate: #5a6475;
+  --color-line: #e2e6ec;
+  --color-accent: #2f5bd8;
+  --color-accent-strong: #2449b8;
+  --color-accent-soft: #eaf0fd;
+
+  --color-up: #0b7a50;
+  --color-up-soft: #e6f5ee;
+  --color-down: #b8303c;
+  --color-down-soft: #fcebec;
+  --color-hold: #8a5a10;
+  --color-hold-soft: #fbf3e4;
+
+  /* Type scale: 1.25 ratio on a 16px base. */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.45;
+  --text-xl: 1.5625rem;
+  --text-xl--line-height: 1.3;
+  --text-2xl: 1.9375rem;
+  --text-2xl--line-height: 1.2;
+  --text-2xl--letter-spacing: -0.015em;
+  --text-3xl: 2.4375rem;
+  --text-3xl--line-height: 1.12;
+  --text-3xl--letter-spacing: -0.015em;
+  --text-hero: 3.8125rem;
+  --text-hero--line-height: 1.04;
+  --text-hero--letter-spacing: -0.025em;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper font-sans text-base text-ink antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Motion that answers an action: a toast arriving, a dialog opening. */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+@layer components {
+  .toast-in {
+    animation: toast-in 180ms ease-out;
+  }
+
+  .dialog[open] {
+    animation: dialog-in 160ms ease-out;
+  }
+}
+
+/* Landing: the hero chart draw (the page's one orchestrated moment). */
+@keyframes hero-reveal {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes hero-note {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes open-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(11 122 80 / 0.45);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 7px rgb(11 122 80 / 0);
+  }
+}
+
+@layer components {
+  .hero-reveal {
+    transform-box: fill-box;
+    transform-origin: left;
+    animation: hero-reveal 1.6s cubic-bezier(0.45, 0, 0.2, 1) 0.2s backwards;
+  }
+
+  .hero-note {
+    animation: hero-note 420ms ease-out backwards;
+  }
+
+  .open-dot {
+    animation: open-pulse 2.4s ease-out infinite;
+  }
+
+  .marquee-track {
+    animation: marquee 48s linear infinite;
+  }
+
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track,
+  .marquee[data-paused='true'] .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal,
+  .hero-note,
+  .open-dot,
+  .marquee-track {
+    animation: none !important;
+  }
+}
