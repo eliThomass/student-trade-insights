@@ -107,17 +107,26 @@
   }
 }
 
-/* Landing: the hero chart draw (the page's one orchestrated moment). */
-@keyframes hero-reveal {
+/* Landing: the hero chart walkthrough (the page's one orchestrated moment). */
+@keyframes candle-in {
   from {
-    transform: scaleX(0);
+    opacity: 0;
+    transform: scaleY(0.3);
   }
 }
 
-@keyframes hero-note {
+@keyframes chart-note {
   from {
     opacity: 0;
-    transform: translateY(4px);
+  }
+}
+
+@keyframes step-progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
 
@@ -138,14 +147,18 @@
 }
 
 @layer components {
-  .hero-reveal {
+  .candle-in {
     transform-box: fill-box;
-    transform-origin: left;
-    animation: hero-reveal 1.6s cubic-bezier(0.45, 0, 0.2, 1) 0.2s backwards;
+    transform-origin: center;
+    animation: candle-in 260ms ease-out backwards;
   }
 
-  .hero-note {
-    animation: hero-note 420ms ease-out backwards;
+  .chart-note {
+    animation: chart-note 400ms ease-out 120ms backwards;
+  }
+
+  .step-progress {
+    animation: step-progress linear forwards;
   }
 
   .open-dot {
@@ -164,8 +177,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-reveal,
-  .hero-note,
+  .candle-in,
+  .chart-note,
+  .step-progress,
   .open-dot,
   .marquee-track {
     animation: none !important;

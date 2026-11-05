@@ -52,7 +52,9 @@ These are the trading meanings of green, red, and amber. (Darkened from the firs
 
 The most characteristic object in this world is a chart the mentor has marked up: price, a dashed level, an arrow, a short handwritten-style note like "liquidity taken" or "entry after reclaim". The hero centers on one of these, drawn as inline SVG.
 
-On first load the price line draws left to right once (~1.6s). Then the annotations fade in one by one, as if the mentor were marking it live. That is the page's single orchestrated motion moment, and it is skipped under `prefers-reduced-motion`.
+It's a 2-minute ES chart of the New York open with a price scale, session times, and the shaded risk/reward box traders use (risk to the stop, reward to the target, with the R multiple). Candles stay monochrome; color only marks the trade.
+
+The chart is a short walkthrough of the setup: Levels, Sweep, Entry, Target. When it scrolls into view it plays through once, revealing candles up to each step with a one-line explanation. Visitors can tap any step or replay it. Afterwards the last candle ticks quietly as if live, pausing when off screen. Hovering, dragging or using the arrow keys shows a crosshair and that candle's open/high/low/close. It's drawn at real pixel size, so text stays readable on phones. Under `prefers-reduced-motion` it shows the finished setup with no autoplay or ticking.
 
 The same annotation language (a dashed level line plus a small note) is reused quietly elsewhere:
 
@@ -64,7 +66,7 @@ Everything else stays calm.
 ### Motion budget
 
 - **Allowed:**
-  - the hero chart draw
+  - the hero chart walkthrough (autoplays once) and the quiet live tick on its last candle
   - the pulsing dot on "Applications open" (from High Alpha Trends)
   - one slow, pausable marquee of dated student results directly under the hero, with its disclaimer inline (from High Alpha Trends)
   - transitions that answer an action: a dialog opening, a toast confirming "Approved · email sent to applicant", an accordion expanding, a reorder settling

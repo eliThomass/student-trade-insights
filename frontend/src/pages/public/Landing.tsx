@@ -1,6 +1,7 @@
 import { useEffect, type ReactNode } from 'react'
 import { useLocation } from 'react-router'
-import { ChevronDown, NotebookPen, Video } from 'lucide-react'
+import { NotebookPen, Video } from 'lucide-react'
+import { FaqItem } from '@/components/landing/FaqItem'
 import { HeroChart } from '@/components/landing/HeroChart'
 import { ResultsMarquee } from '@/components/landing/ResultsMarquee'
 import { ButtonLink } from '@/components/ui/Button'
@@ -212,21 +213,15 @@ export default function Landing() {
           <h2 className="text-2xl font-bold sm:text-3xl">Questions</h2>
           <div className="divide-y divide-line border-y border-line">
             {faqs.map((f) => (
-              <details key={f.q} className="group">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-semibold text-ink [&::-webkit-details-marker]:hidden">
-                  {f.q}
-                  <ChevronDown className="size-4 shrink-0 text-slate transition-transform group-open:rotate-180" aria-hidden />
-                </summary>
-                <p className="max-w-[62ch] pb-5 text-slate">
-                  {f.a.startsWith('PLACEHOLDER: ') ? (
-                    <>
-                      <PlaceholderTag>Pricing</PlaceholderTag> {f.a.replace('PLACEHOLDER: ', '')}
-                    </>
-                  ) : (
-                    f.a
-                  )}
-                </p>
-              </details>
+              <FaqItem key={f.q} question={f.q}>
+                {f.a.startsWith('PLACEHOLDER: ') ? (
+                  <>
+                    <PlaceholderTag>Pricing</PlaceholderTag> {f.a.replace('PLACEHOLDER: ', '')}
+                  </>
+                ) : (
+                  f.a
+                )}
+              </FaqItem>
             ))}
           </div>
         </div>
