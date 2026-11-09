@@ -30,8 +30,8 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         {toasts.map((t) => {
           const Icon = t.tone === 'error' ? CircleAlert : t.tone === 'info' ? Info : CircleCheck
           return (
-            <div key={t.id} className="toast-in pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-lg border border-line bg-paper p-4 shadow-lg">
-              <Icon className={`mt-0.5 size-5 shrink-0 ${t.tone === 'error' ? 'text-down' : t.tone === 'info' ? 'text-accent' : 'text-up'}`} aria-hidden />
+            <div key={t.id} className="toast-in pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-lg border border-line bg-raised p-4 shadow-lg shadow-black/30">
+              <Icon className={`mt-0.5 size-5 shrink-0 ${t.tone === 'error' ? 'text-down' : t.tone === 'info' ? 'text-info' : 'text-up'}`} aria-hidden />
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-semibold text-ink">{t.title}</p>
                 {t.detail && (

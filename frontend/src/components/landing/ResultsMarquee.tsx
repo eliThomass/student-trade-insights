@@ -34,7 +34,7 @@ export function ResultsMarquee() {
           <button
             type="button"
             onClick={() => setPaused((p) => !p)}
-            className="rounded-md p-1.5 text-slate hover:bg-paper hover:text-ink motion-reduce:hidden"
+            className="rounded-md p-1.5 text-slate hover:bg-raised hover:text-ink motion-reduce:hidden"
             aria-label={paused ? 'Play results' : 'Pause results'}
           >
             {paused ? <Play className="size-3.5" /> : <Pause className="size-3.5" />}

@@ -5,7 +5,8 @@
  * Hover, drag or use the arrow keys to read each candle.
  *
  * Drawn at the container's real pixel size (not a scaled viewBox) so text
- * stays readable on phones. Under reduced motion it shows the finished
+ * stays readable on phones. Colors follow the mentor's own charts: cyan and
+ * red candles on the chart navy, his markup (levels) in lavender. Under reduced motion it shows the finished
  * setup with no autoplay and no ticking.
  */
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
@@ -46,13 +47,14 @@ const TAG_H = 20
 
 const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n))
 
-type Tone = 'accent' | 'up' | 'down' | 'ink' | 'slate'
+type Tone = 'accent' | 'up' | 'down' | 'ink' | 'slate' | 'mentor'
 const toneVar: Record<Tone, string> = {
   accent: 'var(--color-accent)',
   up: 'var(--color-up)',
   down: 'var(--color-down)',
   ink: 'var(--color-ink)',
   slate: 'var(--color-slate)',
+  mentor: 'var(--color-mentor)',
 }
 
 /** Approximate rendered width of 11.5px Schibsted Grotesk text. */
@@ -77,7 +79,7 @@ function AxisTag({ x, y, text, tone }: { x: number; y: number; text: string; ton
   return (
     <g>
       <rect x={x + 2} y={y - TAG_H / 2} width={AXIS_W - 4} height={TAG_H} rx={3} fill={toneVar[tone]} />
-      <text x={x + AXIS_W / 2} y={y + 4} fontSize={11} fontWeight={600} fill="#fff" textAnchor="middle" className="tabular">
+      <text x={x + AXIS_W / 2} y={y + 4} fontSize={11} fontWeight={600} fill="var(--color-on-fill)" textAnchor="middle" className="tabular">
         {text}
       </text>
     </g>
@@ -195,7 +197,7 @@ export function HeroChart() {
 
   return (
     <figure ref={figure} className="hero-chart min-w-0">
-      <div className="overflow-hidden rounded-xl border border-line bg-paper">
+      <div className="overflow-hidden rounded-xl border border-line bg-mist">
         {/* Symbol and OHLC readout */}
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line px-4 py-2.5 text-xs">
           <p>
@@ -216,7 +218,7 @@ export function HeroChart() {
         </div>
 
         {/* The chart */}
-        <div ref={plotBox} className="min-w-0 overflow-hidden bg-mist/60">
+        <div ref={plotBox} className="min-w-0 overflow-hidden bg-paper">
           <svg
             width={width}
             height={height}
@@ -251,18 +253,18 @@ export function HeroChart() {
             {/* Step 1: levels */}
             {step >= 0 && (
               <g className="chart-note">
-                <line x1={0} x2={plotW} y1={y(OVERNIGHT_HIGH)} y2={y(OVERNIGHT_HIGH)} stroke="var(--color-accent)" strokeWidth={1.25} strokeDasharray="5 4" />
-                <line x1={0} x2={plotW} y1={y(PRIOR_DAY_LOW)} y2={y(PRIOR_DAY_LOW)} stroke="var(--color-accent)" strokeWidth={1.25} strokeDasharray="5 4" />
-                <Note x={8} y={y(OVERNIGHT_HIGH) + TAG_H / 2 + 4} text="Overnight high" tone="accent" />
-                <Note x={8} y={y(PRIOR_DAY_LOW) - TAG_H / 2 - 4} text="Prior day low" tone="accent" />
+                <line x1={0} x2={plotW} y1={y(OVERNIGHT_HIGH)} y2={y(OVERNIGHT_HIGH)} stroke="var(--color-mentor)" strokeWidth={1.25} strokeDasharray="5 4" />
+                <line x1={0} x2={plotW} y1={y(PRIOR_DAY_LOW)} y2={y(PRIOR_DAY_LOW)} stroke="var(--color-mentor)" strokeWidth={1.25} strokeDasharray="5 4" />
+                <Note x={8} y={y(OVERNIGHT_HIGH) + TAG_H / 2 + 4} text="Overnight high" tone="mentor" />
+                <Note x={8} y={y(PRIOR_DAY_LOW) - TAG_H / 2 - 4} text="Prior day low" tone="mentor" />
               </g>
             )}
 
             {/* Step 3: the trade box (drawn under the candles) */}
             {step >= 2 && (
               <g className="chart-note">
-                <rect x={boxLeft} y={y(TARGET)} width={boxRight - boxLeft} height={y(ENTRY) - y(TARGET)} fill="var(--color-up)" fillOpacity={0.09} />
-                <rect x={boxLeft} y={y(ENTRY)} width={boxRight - boxLeft} height={y(STOP) - y(ENTRY)} fill="var(--color-down)" fillOpacity={0.09} />
+                <rect x={boxLeft} y={y(TARGET)} width={boxRight - boxLeft} height={y(ENTRY) - y(TARGET)} fill="var(--color-up)" fillOpacity={0.16} />
+                <rect x={boxLeft} y={y(ENTRY)} width={boxRight - boxLeft} height={y(STOP) - y(ENTRY)} fill="var(--color-down)" fillOpacity={0.16} />
                 <line x1={boxLeft} x2={boxRight} y1={y(ENTRY)} y2={y(ENTRY)} stroke="var(--color-accent)" strokeWidth={1.5} />
                 <line x1={boxLeft} x2={boxRight} y1={y(STOP)} y2={y(STOP)} stroke="var(--color-down)" strokeWidth={1} strokeOpacity={0.6} />
                 <text x={boxLeft + 6} y={y(TARGET) + 15} fontSize={11.5} fontWeight={600} fill="var(--color-up)" className="tabular">
@@ -278,7 +280,7 @@ export function HeroChart() {
             <g>
               {shown.map((k, i) => {
                 const up = k.c >= k.o
-                const color = up ? 'var(--color-ink)' : 'var(--color-slate)'
+                const color = up ? 'var(--color-up)' : 'var(--color-down)'
                 const isNew = i >= reveal.from
                 return (
                   <g
@@ -295,7 +297,7 @@ export function HeroChart() {
                       width={bodyW}
                       height={Math.max(1.5, Math.abs(y(k.o) - y(k.c)))}
                       rx={1}
-                      fill={up ? 'var(--color-paper)' : color}
+                      fill={color}
                       stroke={color}
                       strokeWidth={1.25}
                     />
@@ -347,7 +349,7 @@ export function HeroChart() {
             {hoverIndex !== null && (
               <g pointerEvents="none">
                 <rect x={clamp(x(hoverIndex) - 22, 0, plotW - 44)} y={TOP + plotH + 3} width={44} height={TAG_H} rx={3} fill="var(--color-slate)" />
-                <text x={clamp(x(hoverIndex), 22, plotW - 22)} y={TOP + plotH + 17} fontSize={11} fontWeight={600} fill="#fff" textAnchor="middle" className="tabular">
+                <text x={clamp(x(hoverIndex), 22, plotW - 22)} y={TOP + plotH + 17} fontSize={11} fontWeight={600} fill="var(--color-on-fill)" textAnchor="middle" className="tabular">
                   {timeAt(hoverIndex)}
                 </text>
               </g>
@@ -391,7 +393,7 @@ export function HeroChart() {
             <button
               type="button"
               onClick={replay}
-              className="-mt-0.5 flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-semibold text-slate hover:bg-mist hover:text-ink"
+              className="-mt-0.5 flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-semibold text-slate hover:bg-raised hover:text-ink"
             >
               <RotateCcw className="size-3.5" aria-hidden />
               Replay

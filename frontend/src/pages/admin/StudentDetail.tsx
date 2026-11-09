@@ -175,7 +175,7 @@ export default function StudentDetail() {
                 note={n}
                 actions={
                   <>
-                    <button type="button" onClick={() => setDraft({ ...n, recording_url: n.recording_url ?? '' })} className="rounded-md p-2 text-slate hover:bg-mist hover:text-ink" aria-label={`Edit note from ${formatDate(n.session_date)}`}>
+                    <button type="button" onClick={() => setDraft({ ...n, recording_url: n.recording_url ?? '' })} className="rounded-md p-2 text-slate hover:bg-raised hover:text-ink" aria-label={`Edit note from ${formatDate(n.session_date)}`}>
                       <Pencil className="size-4" />
                     </button>
                     <button type="button" onClick={() => setToDelete(n)} className="rounded-md p-2 text-slate hover:bg-down-soft hover:text-down" aria-label={`Delete note from ${formatDate(n.session_date)}`}>

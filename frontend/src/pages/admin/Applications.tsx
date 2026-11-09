@@ -89,7 +89,7 @@ export default function Applications() {
               </thead>
               <tbody className="divide-y divide-line">
                 {rows.map((a) => (
-                  <tr key={a.id} className="group relative hover:bg-mist">
+                  <tr key={a.id} className="group relative hover:bg-raised">
                     <td className="py-4 pr-4 pl-1">
                       <ScoreBar score={a.ai_score} />
                     </td>

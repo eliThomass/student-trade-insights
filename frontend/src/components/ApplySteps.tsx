@@ -23,7 +23,7 @@ export function ApplySteps({ current }: { current: 0 | 1 | 2 }) {
             <span
               className={cn(
                 'tabular grid size-9 shrink-0 place-items-center rounded-full border-2 text-sm font-bold',
-                done ? 'border-accent bg-accent text-white' : here ? 'border-accent text-accent' : 'border-line text-slate',
+                done ? 'border-accent bg-accent text-on-fill' : here ? 'border-accent text-accent' : 'border-line text-slate',
               )}
             >
               {done ? <Check className="size-4" aria-label="Done" /> : i + 1}

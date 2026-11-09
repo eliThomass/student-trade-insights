@@ -6,7 +6,7 @@ function Video({ url, title }: { url: string; title: string }) {
   const embed = url ? toEmbedUrl(url) : null
   if (embed) {
     return (
-      <div className="aspect-video overflow-hidden rounded-lg bg-ink">
+      <div className="aspect-video overflow-hidden rounded-lg bg-black">
         <iframe
           src={embed}
           title={title}

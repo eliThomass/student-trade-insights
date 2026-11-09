@@ -5,7 +5,7 @@ Goal: Build Order step 1 from `phase1-build-blueprint.md`, a clickable mockup of
 Decisions (Nov 5, 2026):
 
 - Stack: Vite + React + TypeScript + Tailwind v4 + React Router, in `frontend/`.
-- Theme: light, TTrades-style.
+- Theme: light, TTrades-style (superseded Nov 8 by the mentor's dark chart palette; see Color).
 - Subject: options and futures trading.
 - Branding: clearly marked placeholders in one config file.
 - Scope: all routes from the blueprint's route table, plus a "View as" switcher so the mentor can click through as each kind of user.
@@ -22,22 +22,29 @@ Decisions (Nov 5, 2026):
 
 ### Color
 
+The mentor's own chart palette (Nov 8, 2026), which replaces the original light, TTrades-style palette. The layout and restraint of TTrades still apply; only the colors changed. Token names predate the dark theme, so `paper` is the page background and `ink` is the main text.
+
 | Token | Hex | Role |
 |---|---|---|
-| `paper` | `#FFFFFF` | Page background |
-| `mist` | `#F4F6F9` | Alternate sections, sidebar, table headers (cool, not cream) |
-| `ink` | `#0E1726` | Headings and body text |
-| `slate` | `#5A6475` | Secondary text, captions, disclaimers |
-| `line` | `#E2E6EC` | Borders and dividers |
-| `accent` | `#2F5BD8` | The one brand color: primary buttons, links, active nav, the chart's price line. A deeper version of TTrades' `#6A95E5`, so white text on it passes AA. |
+| `paper` | `#131722` | Page background (the chart navy) |
+| `mist` | `#1A1F2C` | Cards, panels, sidebar, alternate sections |
+| `raised` | `#232938` | Hover, inputs, popups (dialogs, menus, toasts) |
+| `line` | `#2E3446` | Borders and dividers |
+| `ink` | `#F5F7FA` | Headings and body text |
+| `slate` | `#9AA3B5` | Labels, timestamps, secondary text |
+| `accent` | `#56BFD8` | Cyan, the one brand color: primary buttons, links, active nav |
+| `accent-strong` | `#B8E8F0` | Ice cyan: hover and highlight |
+| `on-fill` | `#131722` | Text on solid colored fills (white on cyan would fail contrast) |
 
 Semantic colors are used only where they carry meaning, never as decoration:
 
-- `up` `#0B7A50`: active status, approve, positive results
-- `down` `#B8303C`: AI red flags, reject
-- `hold` `#8A5A10`: waitlisted, pending
+- `up` `#56BFD8` (cyan): gains, active status, approve, the reward side of a trade
+- `down` `#F07178`: losses, errors, AI red flags, reject
+- `hold` `#FCEF72` (yellow, sparingly): needs attention, meaning pending and waitlisted, the unranked-application warning, placeholder tags
+- `info` `#C0D8F8` (soft blue): info, tags, approved-awaiting-payment
+- `mentor` `#E0BCE6` (lavender): the mentor's comments and markup, meaning session notes, his levels on the hero chart, the Mentor badge
 
-These are the trading meanings of green, red, and amber. (Darkened from the first draft so badge text passes WCAG AA, at least 4.5:1, on its tinted background.)
+Each has a `*-soft` tint (16% over the background) for badge and banner backgrounds. All text pairs pass WCAG AA (at least 4.5:1); the lowest is red on its tint at 5.0:1.
 
 ### Type
 
@@ -52,7 +59,7 @@ These are the trading meanings of green, red, and amber. (Darkened from the firs
 
 The most characteristic object in this world is a chart the mentor has marked up: price, a dashed level, an arrow, a short handwritten-style note like "liquidity taken" or "entry after reclaim". The hero centers on one of these, drawn as inline SVG.
 
-It's a 2-minute ES chart of the New York open with a price scale, session times, and the shaded risk/reward box traders use (risk to the stop, reward to the target, with the R multiple). Candles stay monochrome; color only marks the trade.
+It's a 2-minute ES chart of the New York open with a price scale, session times, and the shaded risk/reward box traders use (risk to the stop, reward to the target, with the R multiple). Candles are cyan (up) and red (down), as on the mentor's charts, with his levels in lavender.
 
 The chart is a short walkthrough of the setup: Levels, Sweep, Entry, Target. When it scrolls into view it plays through once, revealing candles up to each step with a one-line explanation. Visitors can tap any step or replay it. Afterwards the last candle ticks quietly as if live, pausing when off screen. Hovering, dragging or using the arrow keys shows a crosshair and that candle's open/high/low/close. It's drawn at real pixel size, so text stays readable on phones. Under `prefers-reduced-motion` it shows the finished setup with no autoplay or ticking.
 

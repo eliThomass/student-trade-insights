@@ -48,10 +48,10 @@ export function LibrarySearch() {
         onFocus={() => setOpen(true)}
         placeholder="Search lessons and resources"
         autoComplete="off"
-        className="h-10 w-full rounded-md border border-line bg-mist pr-3 pl-9 text-base text-ink placeholder:text-slate/80 focus:border-accent focus:bg-paper focus:outline-none sm:text-sm"
+        className="h-10 w-full rounded-md border border-line bg-raised pr-3 pl-9 text-base text-ink placeholder:text-slate focus:border-accent focus:outline-none sm:text-sm"
       />
       {open && q && data && (
-        <div className="absolute inset-x-0 top-12 z-40 max-h-[70vh] overflow-y-auto rounded-lg border border-line bg-paper p-2 shadow-xl">
+        <div className="absolute inset-x-0 top-12 z-40 max-h-[70vh] overflow-y-auto rounded-lg border border-line bg-raised p-2 shadow-xl shadow-black/40">
           {total === 0 ? (
             <p className="px-3 py-4 text-sm text-slate">Nothing matches “{q}”. Try a broader word, like “risk” or “options”.</p>
           ) : (
@@ -60,7 +60,7 @@ export function LibrarySearch() {
                 <div>
                   <p className="px-3 pt-2 pb-1 text-xs font-semibold text-slate">Lessons</p>
                   {data.modules.map(({ module, snippet }) => (
-                    <Link key={module.id} to={`/learn/${module.slug}`} className="block rounded-md px-3 py-2 hover:bg-mist">
+                    <Link key={module.id} to={`/learn/${module.slug}`} className="block rounded-md px-3 py-2 hover:bg-raised">
                       <span className="text-sm font-semibold text-ink">{module.title}</span>
                       {snippet && <span className="mt-0.5 line-clamp-2 block text-xs text-slate">{snippet}</span>}
                     </Link>
@@ -71,7 +71,7 @@ export function LibrarySearch() {
                 <div className="mt-1">
                   <p className="px-3 pt-2 pb-1 text-xs font-semibold text-slate">Resources</p>
                   {data.resources.map((r) => (
-                    <a key={r.id} href={r.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-mist">
+                    <a key={r.id} href={r.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-raised">
                       <FileText className="size-4 text-slate" aria-hidden />
                       <span className="flex-1 text-sm font-semibold text-ink">{r.title}</span>
                       <span className="text-xs text-slate">{resourceTypeLabel[r.type]}</span>

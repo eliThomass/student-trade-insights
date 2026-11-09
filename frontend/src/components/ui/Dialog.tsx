@@ -29,7 +29,7 @@ export function Dialog({ open, onClose, title, description, children, actions, w
       onClose={onClose}
       onClick={(e) => e.target === ref.current && onClose()}
       aria-labelledby="dialog-title"
-      className={`dialog m-auto w-[calc(100%-2rem)] rounded-xl bg-paper p-0 text-ink shadow-2xl backdrop:bg-ink/40 ${width === 'lg' ? 'max-w-2xl' : 'max-w-lg'}`}
+      className={`dialog m-auto w-[calc(100%-2rem)] rounded-xl border border-line bg-mist p-0 text-ink shadow-2xl backdrop:bg-black/60 ${width === 'lg' ? 'max-w-2xl' : 'max-w-lg'}`}
     >
       {open && (
         <div className="flex max-h-[85vh] flex-col">
@@ -40,7 +40,7 @@ export function Dialog({ open, onClose, title, description, children, actions, w
               </h2>
               {description && <p className="mt-1 text-sm text-slate">{description}</p>}
             </div>
-            <button type="button" onClick={onClose} className="-mr-2 rounded-md p-2 text-slate hover:bg-mist hover:text-ink" aria-label="Close">
+            <button type="button" onClick={onClose} className="-mr-2 rounded-md p-2 text-slate hover:bg-raised hover:text-ink" aria-label="Close">
               <X className="size-4" aria-hidden />
             </button>
           </div>

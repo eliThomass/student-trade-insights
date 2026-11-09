@@ -20,12 +20,12 @@ function ModuleRow({ m, position, done, next }: { m: Module; position: number; d
     <li>
       <Link
         to={`/learn/${m.slug}`}
-        className={cn('group flex items-center gap-4 px-4 py-4 transition-colors hover:bg-mist sm:px-5', next && 'bg-accent-soft/50 hover:bg-accent-soft')}
+        className={cn('group flex items-center gap-4 px-4 py-4 transition-colors hover:bg-raised sm:px-5', next && 'bg-accent-soft/50 hover:bg-accent-soft')}
       >
         <span
           className={cn(
             'tabular grid size-8 shrink-0 place-items-center rounded-full text-sm font-bold',
-            done ? 'bg-up text-white' : next ? 'border-2 border-accent text-accent' : 'border border-line text-slate',
+            done ? 'bg-up text-on-fill' : next ? 'border-2 border-accent text-accent' : 'border border-line text-slate',
           )}
         >
           {done ? <Check className="size-4" aria-label="Completed" /> : position}
