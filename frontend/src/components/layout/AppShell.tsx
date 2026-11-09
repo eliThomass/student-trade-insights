@@ -38,7 +38,7 @@ export function AppShell({ nav, area, topBar, homeTo }: AppShellProps) {
       <aside className="sticky top-0 hidden h-svh flex-col border-r border-line bg-mist md:flex">
         <div className="px-5 pt-5 pb-6">
           <Logo to={homeTo} />
-          {area && <p className="mt-1 pl-[38px] text-xs font-semibold text-slate">{area}</p>}
+          {area && <p className="mt-1.5 ml-[38px] inline-block rounded bg-mentor-soft px-1.5 py-0.5 text-xs font-semibold text-mentor">{area}</p>}
         </div>
         <nav aria-label="Sections" className="flex flex-col gap-0.5 px-3">
           {nav.map(({ to, label, icon: Icon, count }) => (
@@ -48,7 +48,7 @@ export function AppShell({ nav, area, topBar, homeTo }: AppShellProps) {
               className={({ isActive }) =>
                 cn(
                   'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-semibold transition-colors',
-                  isActive ? 'bg-paper text-ink shadow-[0_1px_2px_rgb(14_23_38/0.06)] ring-1 ring-line' : 'text-slate hover:bg-paper/60 hover:text-ink',
+                  isActive ? 'bg-raised text-ink ring-1 ring-line' : 'text-slate hover:bg-raised/60 hover:text-ink',
                 )
               }
             >
@@ -67,7 +67,7 @@ export function AppShell({ nav, area, topBar, homeTo }: AppShellProps) {
               <p className="truncate text-sm font-semibold">{profile.name}</p>
               <p className="truncate text-xs text-slate">{profile.email}</p>
             </div>
-            <button type="button" onClick={logOut} className="rounded-md p-1.5 text-slate hover:bg-paper hover:text-ink" aria-label="Log out" title="Log out">
+            <button type="button" onClick={logOut} className="rounded-md p-1.5 text-slate hover:bg-raised hover:text-ink" aria-label="Log out" title="Log out">
               <LogOut className="size-4" />
             </button>
           </div>
@@ -80,7 +80,7 @@ export function AppShell({ nav, area, topBar, homeTo }: AppShellProps) {
             <Logo to={homeTo} />
           </div>
           <div className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 md:ml-0 md:justify-start">{topBar}</div>
-          <button type="button" onClick={logOut} className="rounded-md p-2 text-slate hover:bg-mist hover:text-ink md:hidden" aria-label="Log out">
+          <button type="button" onClick={logOut} className="rounded-md p-2 text-slate hover:bg-raised hover:text-ink md:hidden" aria-label="Log out">
             <LogOut className="size-4" />
           </button>
         </header>
@@ -98,7 +98,7 @@ export function AppShell({ nav, area, topBar, homeTo }: AppShellProps) {
           >
             <Icon className="size-5" />
             {label}
-            {count ? <span className="tabular absolute top-1.5 left-1/2 ml-2 rounded-full bg-hold px-1 text-[10px] text-white">{count}</span> : null}
+            {count ? <span className="tabular absolute top-1.5 left-1/2 ml-2 rounded-full bg-hold px-1 text-[10px] text-on-fill">{count}</span> : null}
           </NavLink>
         ))}
       </nav>

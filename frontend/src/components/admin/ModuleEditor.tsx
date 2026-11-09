@@ -182,10 +182,10 @@ export function ModuleEditor({ module, onClose }: { module: Module | null; onClo
                 <div className="mb-2 flex items-center justify-between gap-2">
                   <span className="text-xs font-semibold text-slate">{blockLabels[b.type]}</span>
                   <span className="flex">
-                    <button type="button" disabled={i === 0} onClick={() => move(i, -1)} className="rounded p-1.5 text-slate hover:bg-mist disabled:opacity-30" aria-label="Move block up">
+                    <button type="button" disabled={i === 0} onClick={() => move(i, -1)} className="rounded p-1.5 text-slate hover:bg-raised disabled:opacity-30" aria-label="Move block up">
                       <ArrowUp className="size-3.5" />
                     </button>
-                    <button type="button" disabled={i === blocks.length - 1} onClick={() => move(i, 1)} className="rounded p-1.5 text-slate hover:bg-mist disabled:opacity-30" aria-label="Move block down">
+                    <button type="button" disabled={i === blocks.length - 1} onClick={() => move(i, 1)} className="rounded p-1.5 text-slate hover:bg-raised disabled:opacity-30" aria-label="Move block down">
                       <ArrowDown className="size-3.5" />
                     </button>
                     <button type="button" onClick={() => setBlocks((bs) => bs.filter((_, j) => j !== i))} className="rounded p-1.5 text-slate hover:bg-down-soft hover:text-down" aria-label="Remove block">

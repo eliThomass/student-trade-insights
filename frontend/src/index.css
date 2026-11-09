@@ -2,28 +2,40 @@
 @import 'tailwindcss';
 
 /*
- * Design tokens. See docs/PLAN.md, section 1.
- * Semantic colors (up / down / hold) carry meaning only:
- * active and approve, red flags and reject, waitlisted and pending.
+ * Design tokens: the mentor's own chart palette (dark). See docs/PLAN.md, section 1.
+ * Token names predate the dark theme: `paper` is the page background,
+ * `mist` the card surface, `ink` the main text.
+ * Semantic colors carry meaning only: up = gains, active, approve (cyan);
+ * down = losses, red flags, reject; hold = needs attention (yellow, sparingly);
+ * info = approved-awaiting-payment, tags; mentor = the mentor's comments and markup.
+ * `*-soft` tints are each color at 16% over the background.
  */
 @theme {
   --font-sans: 'Schibsted Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
 
-  --color-paper: #ffffff;
-  --color-mist: #f4f6f9;
-  --color-ink: #0e1726;
-  --color-slate: #5a6475;
-  --color-line: #e2e6ec;
-  --color-accent: #2f5bd8;
-  --color-accent-strong: #2449b8;
-  --color-accent-soft: #eaf0fd;
+  --color-paper: #131722;
+  --color-mist: #1a1f2c;
+  --color-raised: #232938;
+  --color-line: #2e3446;
+  --color-ink: #f5f7fa;
+  --color-slate: #9aa3b5;
+  /* Text and icons on a solid colored fill (cyan, red, yellow, light pills). */
+  --color-on-fill: #131722;
 
-  --color-up: #0b7a50;
-  --color-up-soft: #e6f5ee;
-  --color-down: #b8303c;
-  --color-down-soft: #fcebec;
-  --color-hold: #8a5a10;
-  --color-hold-soft: #fbf3e4;
+  --color-accent: #56bfd8;
+  --color-accent-strong: #b8e8f0;
+  --color-accent-soft: #1e323f;
+
+  --color-up: #56bfd8;
+  --color-up-soft: #1e323f;
+  --color-down: #f07178;
+  --color-down-soft: #362530;
+  --color-hold: #fcef72;
+  --color-hold-soft: #383a2f;
+  --color-info: #c0d8f8;
+  --color-info-soft: #2f3644;
+  --color-mentor: #e0bce6;
+  --color-mentor-soft: #343141;
 
   /* Type scale: 1.25 ratio on a 16px base. */
   --text-xs: 0.8125rem;
@@ -49,7 +61,7 @@
 
 @layer base {
   html {
-    color-scheme: light;
+    color-scheme: dark;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -138,11 +150,11 @@
 
 @keyframes open-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgb(11 122 80 / 0.45);
+    box-shadow: 0 0 0 0 rgb(86 191 216 / 0.45);
   }
   70%,
   100% {
-    box-shadow: 0 0 0 7px rgb(11 122 80 / 0);
+    box-shadow: 0 0 0 7px rgb(86 191 216 / 0);
   }
 }
 

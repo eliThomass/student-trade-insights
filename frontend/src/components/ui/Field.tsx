@@ -2,7 +2,7 @@ import { useId, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttribu
 import { cn } from '@/lib/cn'
 
 export const controlClass =
-  'block w-full rounded-md border border-line bg-paper px-3 text-base text-ink placeholder:text-slate/70 transition-colors hover:border-slate/40 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0 aria-invalid:border-down sm:text-sm'
+  'block w-full rounded-md border border-line bg-raised px-3 text-base text-ink placeholder:text-slate transition-colors hover:border-slate/40 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0 aria-invalid:border-down sm:text-sm'
 
 interface FieldShellProps {
   label: ReactNode

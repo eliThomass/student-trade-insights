@@ -38,7 +38,7 @@ export function ResourceList({ resources, modules }: { resources: Resource[]; mo
                 ))}
               </p>
             </div>
-            <a href={r.url} target="_blank" rel="noreferrer" className="rounded-md p-2 text-slate hover:bg-mist hover:text-ink" aria-label={`Open ${r.title}`}>
+            <a href={r.url} target="_blank" rel="noreferrer" className="rounded-md p-2 text-slate hover:bg-raised hover:text-ink" aria-label={`Open ${r.title}`}>
               <ExternalLink className="size-4" aria-hidden />
             </a>
           </li>

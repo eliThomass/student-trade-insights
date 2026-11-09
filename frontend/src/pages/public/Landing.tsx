@@ -70,27 +70,27 @@ export default function Landing() {
       <Section id="included" className="py-20 sm:py-28">
         <h2 className="max-w-[24ch] text-2xl font-bold sm:text-3xl">What you get when you’re accepted</h2>
         <div className="mt-10 grid gap-5 lg:grid-cols-[1.25fr_1fr]">
-          <article className="flex flex-col rounded-xl bg-ink p-7 text-white sm:p-9">
-            <Video className="size-6 text-white/70" aria-hidden />
+          <article className="flex flex-col rounded-xl border border-accent/40 bg-mist p-7 sm:p-9">
+            <Video className="size-6 text-accent" aria-hidden />
             <h3 className="mt-5 text-xl font-bold">One-on-one mentorship</h3>
-            <p className="mt-3 max-w-[48ch] text-white/75">
+            <p className="mt-3 max-w-[48ch] text-slate">
               Regular calls with {site.mentorName} where you bring your best and worst trades and leave with a short list of
               what to fix. He reads your journal, so nothing gets glossed over.
             </p>
-            <ul className="mt-8 grid gap-x-8 gap-y-4 border-t border-white/15 pt-7 text-sm sm:grid-cols-3">
+            <ul className="mt-8 grid gap-x-8 gap-y-4 border-t border-line pt-7 text-sm sm:grid-cols-3">
               <li>
                 <p className="font-semibold">Trade reviews</p>
-                <p className="mt-1 text-white/65">Your journal, read before every call.</p>
+                <p className="mt-1 text-slate">Your journal, read before every call.</p>
               </li>
               <li>
                 <p className="font-semibold">A written plan</p>
-                <p className="mt-1 text-white/65">Rules, risk and one model, built with you.</p>
+                <p className="mt-1 text-slate">Rules, risk and one model, built with you.</p>
               </li>
               <li>
                 <p className="font-semibold">
                   Call cadence <PlaceholderTag>TBC</PlaceholderTag>
                 </p>
-                <p className="mt-1 text-white/65">Set by the mentor once pricing is final.</p>
+                <p className="mt-1 text-slate">Set by the mentor once pricing is final.</p>
               </li>
             </ul>
           </article>

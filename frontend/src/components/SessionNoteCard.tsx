@@ -24,7 +24,7 @@ export function SessionNoteCard({ note, actions }: { note: SessionNote; actions?
           <dd className="mt-1.5 leading-relaxed text-ink">{note.takeaways}</dd>
         </div>
         <div className="md:border-l md:border-line md:pl-8">
-          <dt className="text-sm font-semibold text-accent">What to work on</dt>
+          <dt className="text-sm font-semibold text-mentor">What to work on</dt>
           <dd className="mt-1.5 leading-relaxed text-ink">{note.homework}</dd>
         </div>
       </dl>

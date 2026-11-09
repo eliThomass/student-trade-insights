@@ -18,7 +18,7 @@ import type { Module, Resource } from '@/types/db'
 type TabValue = 'modules' | 'resources'
 type Deleting = { kind: 'module'; item: Module } | { kind: 'resource'; item: Resource }
 
-const iconButton = 'rounded-md p-2 text-slate hover:bg-mist hover:text-ink disabled:opacity-30 disabled:hover:bg-transparent'
+const iconButton = 'rounded-md p-2 text-slate hover:bg-raised hover:text-ink disabled:opacity-30 disabled:hover:bg-transparent'
 
 export default function Content() {
   const toast = useToast()

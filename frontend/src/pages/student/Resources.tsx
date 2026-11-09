@@ -48,7 +48,7 @@ export default function Resources() {
             onClick={() => setTag(tag === t ? null : t)}
             className={cn(
               'rounded-full border px-3 py-1 text-sm font-medium transition-colors',
-              tag === t ? 'border-accent bg-accent text-white' : 'border-line text-slate hover:border-slate/40 hover:text-ink',
+              tag === t ? 'border-accent bg-accent text-on-fill' : 'border-line text-slate hover:border-slate/40 hover:text-ink',
             )}
           >
             {t}

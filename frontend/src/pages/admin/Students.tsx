@@ -45,7 +45,7 @@ export default function Students() {
           <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line">
             {rows.map((s) => (
               <li key={s.id}>
-                <Link to={`/admin/students/${s.id}`} className="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 px-4 py-4 hover:bg-mist sm:grid-cols-[1.4fr_1fr_1fr_auto] sm:px-5">
+                <Link to={`/admin/students/${s.id}`} className="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 px-4 py-4 hover:bg-raised sm:grid-cols-[1.4fr_1fr_1fr_auto] sm:px-5">
                   <span className="min-w-0">
                     <span className="block font-semibold text-ink">{s.name}</span>
                     <span className="block truncate text-sm text-slate">{s.email}</span>

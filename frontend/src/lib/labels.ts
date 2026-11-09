@@ -3,7 +3,7 @@ import type { Decision, ProfileStatus, ResourceType } from '@/types/db'
 
 export const statusTone: Record<ProfileStatus, Tone> = {
   applicant: 'hold',
-  approved: 'accent',
+  approved: 'info',
   active: 'up',
   waitlisted: 'hold',
   rejected: 'down',

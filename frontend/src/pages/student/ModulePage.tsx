@@ -74,7 +74,7 @@ export default function ModulePage() {
         </Button>
         <nav aria-label="Lessons" className="mt-8 grid gap-3 sm:grid-cols-2">
           {prev ? (
-            <Link to={`/learn/${prev.slug}`} className="rounded-lg border border-line p-4 hover:bg-mist">
+            <Link to={`/learn/${prev.slug}`} className="rounded-lg border border-line p-4 hover:bg-raised">
               <span className="flex items-center gap-1.5 text-sm text-slate">
                 <ArrowLeft className="size-3.5" aria-hidden /> Previous
               </span>
@@ -84,7 +84,7 @@ export default function ModulePage() {
             <span />
           )}
           {next && (
-            <Link to={`/learn/${next.slug}`} className="rounded-lg border border-line p-4 text-right hover:bg-mist">
+            <Link to={`/learn/${next.slug}`} className="rounded-lg border border-line p-4 text-right hover:bg-raised">
               <span className="flex items-center justify-end gap-1.5 text-sm text-slate">
                 Next <ArrowRight className="size-3.5" aria-hidden />
               </span>
